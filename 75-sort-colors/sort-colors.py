@@ -1,7 +1,9 @@
 class Solution:
     def sortColors(self, nums: list[int]) -> None:
+        n = len(nums) if len(nums) > 1 or len(nums) < 300 else 0
+
         left = i = 0
-        right = len(nums) - 1
+        right = n - 1
         
         while i <= right:
             match nums[i]:
