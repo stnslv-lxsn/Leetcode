@@ -1,14 +1,17 @@
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        n = len(nums) if len(nums) < 300 or len(nums) > 1 else 0
-
-        for i in range(1, n):
-            if nums[i] > 2:
-                raise ValueError("Значения неверные")
-
-        for i in range(n):
-            for j in range(1, n - i):
-                if nums[j] < nums[j - 1]:
-                    temp = nums[j - 1]
-                    nums[j - 1] = nums[j]
-                    nums[j] = temp
+        left = 0
+        right = len(nums) - 1
+        i = 0
+        
+        while i <= right:
+            match nums[i]:
+                case 0:
+                    nums[i], nums[left] = nums[left], nums[i]
+                    left += 1
+                    i += 1
+                case 1:
+                    i += 1
+                case 2:
+                    nums[i], nums[right] = nums[right], nums[i]
+                    right -= 1
